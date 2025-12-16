@@ -55,7 +55,7 @@ vim.o.timeoutlen = 300
 
 -- Configure how new splits should be opened
 vim.o.splitright = true
-vim.o.splitbelow = true
+-- vim.o.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -914,6 +914,20 @@ require('lazy').setup({
     'github/copilot.vim',
     cmd = 'Copilot',
     event = 'BufWinEnter',
+  },
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'nvim-lua/plenary.nvim', branch = 'master' },
+    },
+    build = 'make tiktoken',
+    opts = {
+      window = {
+        layout = 'float', -- 'vertical', 'horizontal', 'float'
+        width = 0.5, -- 50% of screen width
+        height = 0.5, -- 50% of screen width
+      },
+    },
   },
 }, {
   ui = {
